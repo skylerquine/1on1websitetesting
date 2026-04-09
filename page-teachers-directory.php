@@ -181,8 +181,6 @@ function teachers_directory_page_url(int $page, array $selected_tag_ids): string
 ?>
 
 <main class="teachers-page">
-  <div class="teachers-hero"></div>
-
   <div class="teachers-directory">
     <header class="teachers-directory__header">
       <h1 class="teachers-directory__title">Online Piano Teachers</h1>
@@ -342,17 +340,27 @@ function teachers_directory_page_url(int $page, array $selected_tag_ids): string
 
 <script type="application/ld+json">
 <?php
+$schema_items = [];
+$position     = 1;
+foreach ($items as $t) {
+  $t_slug = isset($t['slug']) ? (string) $t['slug'] : '';
+  $t_name = isset($t['displayName']) ? (string) $t['displayName'] : 'Teacher';
+  if ($t_slug === '') continue;
+  $schema_items[] = [
+    '@type'    => 'ListItem',
+    'position' => $position++,
+    'url'      => home_url('/teachers/' . rawurlencode($t_slug) . '/'),
+    'name'     => $t_name,
+  ];
+}
 $schema = [
-  "@context" => "https://schema.org",
-  "@type" => "Person",
-  "name" => $teacher_name ?? '',
-  "description" => $headline ?? '',
-  "image" => $image_url ?? '',
-  "url" => get_permalink(),
-  "jobTitle" => "Piano Teacher"
+  '@context'        => 'https://schema.org',
+  '@type'           => 'ItemList',
+  'name'            => 'Online Piano Teachers',
+  'url'             => home_url('/teachers/'),
+  'itemListElement' => $schema_items,
 ];
-
-echo wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+echo wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 ?>
 </script>
 

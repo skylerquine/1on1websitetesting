@@ -62,6 +62,17 @@ add_filter('document_title_parts', function ($title_parts) {
   return $title_parts;
 });
 
+// Full-width layout for teacher profile pages:
+// - ast-no-sidebar removes Astra's sidebar so #primary gets 100% width
+// - teacher-full-width is our hook for CSS to override .ast-container max-width
+add_filter('body_class', function ($classes) {
+  if (!empty(get_query_var('teacher_slug'))) {
+    $classes[] = 'ast-no-sidebar';
+    $classes[] = 'teacher-full-width';
+  }
+  return $classes;
+});
+
 /**
  * Teacher directory: /teachers/
  */
