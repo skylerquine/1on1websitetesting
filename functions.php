@@ -98,6 +98,25 @@ add_filter('template_include', function ($template) {
   return $template;
 });
 */
+// Dynamically match .teachers-page padding-top to the actual Astra header
+// height so content always clears the fixed/sticky nav on every screen size.
+add_action('wp_footer', function () {
+  ?>
+  <script>
+  (function () {
+    var page = document.querySelector('.teachers-page');
+    if (!page) return;
+    function adjust() {
+      var masthead = document.getElementById('masthead');
+      if (masthead) page.style.paddingTop = masthead.offsetHeight + 'px';
+    }
+    adjust();
+    window.addEventListener('resize', adjust);
+  })();
+  </script>
+  <?php
+});
+
 if (!function_exists('oai_fetch_json_cached')) {
   function oai_fetch_json_cached($cache_key, $url, $ttl_seconds = 900) {
     $cached = get_transient($cache_key);
