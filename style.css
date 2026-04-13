@@ -159,12 +159,7 @@ Template: astra
 .teachers-filters__submit {
   appearance: none;
   border: 0;
-  border-radius: 12px;
-  padding: 10px 16px;
   cursor: pointer;
-  background: #111;
-  color: #fff;
-  font-weight: 600;
 }
 
 .teachers-filters__clear {
