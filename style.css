@@ -30,7 +30,7 @@ Template: astra
 .teachers-directory {
   width: 100%;
   margin: 0 auto;
-  margin-top: var(--masthead-bottom, 0px);
+  margin-top: var(--masthead-bottom, 80px);
   padding: 40px 20px;
 }
 
@@ -225,7 +225,7 @@ Template: astra
 
 .teacher-card__name {
   margin: 0 0 8px;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.2;
 }
 
@@ -286,7 +286,7 @@ body.teacher-full-width #primary {
 }
 
 .teacher-page {
-  margin-top: var(--masthead-bottom, 0px);
+  margin-top: var(--masthead-bottom, 80px);
   padding: 40px 20px;
 }
 

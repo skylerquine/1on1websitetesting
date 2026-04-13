@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_ASTRA_CHILD_VERSION', '1.0.1' );
+define( 'CHILD_THEME_ASTRA_CHILD_VERSION', '1.0.2' );
 
 /**
  * Enqueue styles
@@ -118,6 +118,7 @@ add_action('wp_footer', function () {
       );
     }
     adjust();
+    requestAnimationFrame(adjust);
     window.addEventListener('load', adjust);
     window.addEventListener('resize', adjust);
   })();
