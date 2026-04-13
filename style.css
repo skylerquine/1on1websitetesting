@@ -112,7 +112,7 @@ Template: astra
   margin-top: 8px;
 }
 
-.teachers-filters__option {
+.teachers-filters .teachers-filters__option {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
@@ -124,17 +124,17 @@ Template: astra
   transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
-.teachers-filters__option:hover {
+.teachers-filters .teachers-filters__option:hover {
   background: rgba(1, 109, 76, 0.18);
 }
 
-.teachers-filters__option:has(.teachers-filters__checkbox:checked) {
+.teachers-filters .teachers-filters__option:has(.teachers-filters__checkbox:checked) {
   background: var(--color-primary);
   border-color: var(--color-primary);
   color: #fff;
 }
 
-.teachers-filters__checkbox {
+.teachers-filters .teachers-filters__checkbox {
   display: none;
 }
 
@@ -423,6 +423,18 @@ body.teacher-full-width #primary {
   border: 1px solid rgba(1, 109, 76, 0.2);
   font-size: 14px;
   line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .teachers-directory {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .teacher-page {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
 }
 
 @media (max-width: 700px) {
