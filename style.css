@@ -224,14 +224,31 @@ Template: astra
 }
 
 .teacher-card__name {
-  margin: 0 0 8px;
-  font-size: 15px;
+  margin: 0 0 6px;
+  font-size: 13px;
   line-height: 1.2;
 }
 
 .teacher-card__headline {
-  margin: 0;
-  opacity: 0.8;
+  position: relative;
+  margin: 0 0 2px;
+  padding: 6px 10px 6px 22px;
+  font-size: 12px;
+  line-height: 1.4;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.teacher-card__headline::before {
+  content: '\201C';
+  position: absolute;
+  left: 4px;
+  top: 2px;
+  font-size: 22px;
+  line-height: 1;
+  font-style: normal;
+  color: var(--color-primary);
+  opacity: 0.6;
 }
 
 .teacher-card__tags-grid {
