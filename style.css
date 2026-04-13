@@ -397,16 +397,18 @@ body.teacher-full-width #primary {
   background: #fff;
 }
 
-.teacher-page__tag-group-title {
+.teacher-page__tag-group .teacher-page__tag-group-title {
   position: absolute;
   top: -0.6em;
   left: 10px;
   margin: 0;
   padding: 0 6px;
   background: #fff;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 600;
   line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .teacher-page__chips {
