@@ -324,9 +324,9 @@ function teachers_directory_page_url(int $page, array $selected_tag_ids): string
               </div>
             <?php endif; ?>
 
-            <a href="https://app.1on1piano.com/match" class="ast-button teacher-card__cta" target="_blank" rel="noopener noreferrer">
+            <button type="button" class="teacher-card__cta" onclick="window.open('https://app.1on1piano.com/match','_blank')">
               Request a Lesson
-            </a>
+            </button>
           </div>
         </article>
       <?php endforeach; ?>

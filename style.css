@@ -227,7 +227,7 @@ Template: astra
   padding: 16px;
 }
 
-.teacher-card__name {
+.teacher-card .teacher-card__name {
   margin: 0 0 6px;
   font-size: 13px;
   line-height: 1.2;
@@ -291,13 +291,14 @@ Template: astra
 
 .teacher-card__cta {
   display: block;
+  width: 100%;
   margin-top: 14px;
-  text-align: center;
+  cursor: pointer;
 }
 
 .teacher-page__cta {
-  display: inline-block;
   margin-top: 20px;
+  cursor: pointer;
 }
 
 .teacher-card:hover {
