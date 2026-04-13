@@ -186,7 +186,7 @@ get_header();
             <p class="teacher-page__seo-para"><?php echo esc_html($seo_auto_para); ?></p>
           <?php endif; ?>
 
-          <a href="https://app.1on1piano.com/match" class="teacher-page__cta" target="_blank" rel="noopener noreferrer">
+          <a href="https://app.1on1piano.com/match" class="teachers-filters__submit teacher-page__cta" target="_blank" rel="noopener noreferrer">
             Request a Lesson with <?php echo $displayName; ?>
           </a>
         </div>

@@ -297,20 +297,12 @@ Template: astra
 .teacher-card__cta {
   display: block;
   margin-top: 14px;
-  padding: 9px 16px;
-  border-radius: 10px;
-  background: var(--color-primary);
-  color: #fff;
   text-align: center;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
-  transition: background 0.15s;
 }
 
-.teacher-card__cta:hover {
-  background: #015a3f;
-  color: #fff;
+.teacher-page__cta {
+  display: inline-block;
+  margin-top: 20px;
 }
 
 .teacher-card:hover {
@@ -438,24 +430,6 @@ body.teacher-full-width #primary {
   font-size: 14px;
   line-height: 1.6;
   opacity: 0.75;
-}
-
-.teacher-page__cta {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 28px;
-  border-radius: 12px;
-  background: var(--color-primary);
-  color: #fff;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 600;
-  transition: background 0.15s;
-}
-
-.teacher-page__cta:hover {
-  background: #015a3f;
-  color: #fff;
 }
 
 .teacher-page__section {
