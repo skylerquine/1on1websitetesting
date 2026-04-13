@@ -98,8 +98,9 @@ add_filter('template_include', function ($template) {
   return $template;
 });
 */
-// Dynamically match .teachers-page padding-top to the actual Astra header
-// height so content always clears the fixed/sticky nav on every screen size.
+// Dynamically match .teachers-page padding-top to the actual rendered bottom
+// of the Astra header. getBoundingClientRect().bottom gives the true viewport
+// distance including the WP admin bar offset, which offsetHeight misses.
 add_action('wp_footer', function () {
   ?>
   <script>
@@ -108,9 +109,12 @@ add_action('wp_footer', function () {
     if (!page) return;
     function adjust() {
       var masthead = document.getElementById('masthead');
-      if (masthead) page.style.paddingTop = masthead.offsetHeight + 'px';
+      if (!masthead) return;
+      var bottom = masthead.getBoundingClientRect().bottom;
+      page.style.paddingTop = (bottom > 0 ? bottom : 0) + 'px';
     }
     adjust();
+    window.addEventListener('load', adjust);
     window.addEventListener('resize', adjust);
   })();
   </script>
