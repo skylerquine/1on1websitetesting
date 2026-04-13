@@ -38,6 +38,7 @@ add_action('init', function () {
 
 add_filter('query_vars', function ($vars) {
   $vars[] = 'teacher_slug';
+  $vars[] = 'tpage'; // directory pagination — was in commented-out block, causing duplicate-scroll bug
   return $vars;
 });
 
@@ -98,20 +99,23 @@ add_filter('template_include', function ($template) {
   return $template;
 });
 */
-// Dynamically match .teachers-page padding-top to the actual rendered bottom
-// of the Astra header. getBoundingClientRect().bottom gives the true viewport
-// distance including the WP admin bar offset, which offsetHeight misses.
+// Header clearance for full-bleed teacher pages.
+// Sets --masthead-bottom on :root so CSS can apply it as margin-top on the
+// non-transformed child elements (.teachers-directory, .teacher-page).
+// Avoids setting inline padding on the transform element itself, which gets
+// clipped by Astra's overflow:hidden on .ast-container.
 add_action('wp_footer', function () {
   ?>
   <script>
   (function () {
-    var page = document.querySelector('.teachers-page');
-    if (!page) return;
+    if (!document.querySelector('.teachers-page')) return;
     function adjust() {
-      var masthead = document.getElementById('masthead');
-      if (!masthead) return;
-      var bottom = masthead.getBoundingClientRect().bottom;
-      page.style.paddingTop = (bottom > 0 ? bottom : 0) + 'px';
+      var m = document.getElementById('masthead');
+      if (!m) return;
+      var bottom = m.getBoundingClientRect().bottom;
+      document.documentElement.style.setProperty(
+        '--masthead-bottom', Math.max(0, bottom) + 'px'
+      );
     }
     adjust();
     window.addEventListener('load', adjust);

@@ -30,6 +30,7 @@ Template: astra
 .teachers-directory {
   width: 100%;
   margin: 0 auto;
+  margin-top: var(--masthead-bottom, 0px);
   padding: 40px 20px;
 }
 
@@ -86,7 +87,7 @@ Template: astra
 .teachers-filters__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  gap: 24px;
   align-items: start;
 }
 
@@ -285,6 +286,7 @@ body.teacher-full-width #primary {
 }
 
 .teacher-page {
+  margin-top: var(--masthead-bottom, 0px);
   padding: 40px 20px;
 }
 
@@ -384,7 +386,7 @@ body.teacher-full-width #primary {
 .teacher-page__tags-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  gap: 24px;
 }
 
 .teacher-page__tag-group {
