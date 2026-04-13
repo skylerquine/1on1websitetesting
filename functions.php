@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_ASTRA_CHILD_VERSION', '1.0.7' );
+define( 'CHILD_THEME_ASTRA_CHILD_VERSION', '1.0.8' );
 
 /**
  * Enqueue styles
@@ -49,6 +49,13 @@ add_filter('template_include', function ($template) {
     if (file_exists($custom)) return $custom;
   }
   return $template;
+});
+
+// Prevent page caching on teacher pages — API returns short-lived signed image URLs.
+add_action('template_redirect', function () {
+  if (!empty(get_query_var('teacher_slug')) || is_page('teachers')) {
+    nocache_headers();
+  }
 });
 
 add_filter('document_title_parts', function ($title_parts) {
