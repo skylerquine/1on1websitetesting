@@ -6,7 +6,7 @@
 
 get_header();
 
-$api_base = 'https://api.v1.dev.app.1on1piano.com';
+$api_base = 'https://api.v1.app.1on1piano.com';
 $placeholder_image = 'https://1on1piano.com/wp-content/uploads/2026/03/teacher-placeholder.png';
 
 $tag_endpoints = [
@@ -148,17 +148,6 @@ if (is_wp_error($response)) {
       $items = $data['results'] ?? [];
       $total_pages = (int) ($data['totalPages'] ?? 1);
       $total_results = (int) ($data['totalResults'] ?? 0);
-
-      usort($items, static function ($a, $b) {
-        $a_has_image = isset($a['imageUrl']) && trim((string) $a['imageUrl']) !== '';
-        $b_has_image = isset($b['imageUrl']) && trim((string) $b['imageUrl']) !== '';
-
-        if ($a_has_image === $b_has_image) {
-          return 0;
-        }
-
-        return $a_has_image ? -1 : 1;
-      });
     }
   } else {
     $error_message = 'Backend returned HTTP ' . $status;
@@ -284,6 +273,15 @@ function teachers_directory_page_url(int $page, array $selected_tag_ids): string
           $raw_image_url = isset($t['imageUrl']) ? trim((string) $t['imageUrl']) : '';
           $image_url = $raw_image_url !== '' ? $raw_image_url : $placeholder_image;
           $profile_url = home_url('/teachers/' . rawurlencode($slug) . '/');
+          $profile_tags = $t['matchPreference']['Tags'] ?? [];
+          $tagsByCategory = [];
+          foreach ($profile_tags as $profile_tag) {
+            if (!isset($profile_tag['category'], $profile_tag['name'])) continue;
+            $category = (string) $profile_tag['category'];
+            $profile_tag_name = (string) $profile_tag['name'];
+            if ($category === '' || $profile_tag_name === '') continue;
+            $tagsByCategory[$category][] = $profile_tag_name;
+          }
         ?>
 
         <article class="teacher-card">
@@ -304,6 +302,23 @@ function teachers_directory_page_url(int $page, array $selected_tag_ids): string
 
               <?php if ($headline !== ''): ?>
                 <p class="teacher-card__headline"><?php echo esc_html($headline); ?></p>
+              <?php endif; ?>
+
+              <?php if (!empty($tagsByCategory)): ?>
+                <div class="teacher-card__tags-grid">
+                  <?php foreach ($tagsByCategory as $category => $items): ?>
+                    <?php if (empty($items)) continue; ?>
+                    <div class="teacher-card__tag-group">
+                      <h6 class="teacher-card__tag-group-title"><?php echo esc_html($category); ?></h6>
+
+                      <div class="teacher-card__chips">
+                        <?php foreach ($items as $item): ?>
+                          <span class="teacher-card__chip"><?php echo esc_html($item); ?></span>
+                        <?php endforeach; ?>
+                      </div>
+                    </div>
+                  <?php endforeach; ?>
+                </div>
               <?php endif; ?>
             </div>
           </a>

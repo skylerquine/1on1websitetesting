@@ -35,7 +35,7 @@ if (!$profileId) {
 /* -------------------------
    2) Try API
 -------------------------- */
-$endpoint = 'https://api.v1.dev.app.1on1piano.com/public/teachers/' . $profileId;
+$endpoint = 'https://api.v1.app.1on1piano.com/public/teachers/' . $profileId;
 
 $response = wp_remote_get($endpoint, [
   'timeout' => 8,
