@@ -296,32 +296,38 @@ function teachers_directory_page_url(int $page, array $selected_tag_ids): string
                 onerror="this.onerror=null;this.src='<?php echo esc_url($placeholder_image); ?>';"
               />
             </div>
-
-            <div class="teacher-card__content">
-              <h2 class="teacher-card__name"><?php echo esc_html($name); ?></h2>
-
-              <?php if ($headline !== ''): ?>
-                <p class="teacher-card__headline"><?php echo esc_html($headline); ?></p>
-              <?php endif; ?>
-
-              <?php if (!empty($tagsByCategory)): ?>
-                <div class="teacher-card__tags-grid">
-                  <?php foreach ($tagsByCategory as $category => $items): ?>
-                    <?php if (empty($items)) continue; ?>
-                    <div class="teacher-card__tag-group">
-                      <h6 class="teacher-card__tag-group-title"><?php echo esc_html($category); ?></h6>
-
-                      <div class="teacher-card__chips">
-                        <?php foreach ($items as $item): ?>
-                          <span class="teacher-card__chip"><?php echo esc_html($item); ?></span>
-                        <?php endforeach; ?>
-                      </div>
-                    </div>
-                  <?php endforeach; ?>
-                </div>
-              <?php endif; ?>
-            </div>
           </a>
+
+          <div class="teacher-card__content">
+            <a href="<?php echo esc_url($profile_url); ?>" class="teacher-card__name-link">
+              <h2 class="teacher-card__name"><?php echo esc_html($name); ?></h2>
+            </a>
+
+            <?php if ($headline !== ''): ?>
+              <p class="teacher-card__headline"><?php echo esc_html($headline); ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($tagsByCategory)): ?>
+              <div class="teacher-card__tags-grid">
+                <?php foreach ($tagsByCategory as $category => $items): ?>
+                  <?php if (empty($items)) continue; ?>
+                  <div class="teacher-card__tag-group">
+                    <h6 class="teacher-card__tag-group-title"><?php echo esc_html($category); ?></h6>
+
+                    <div class="teacher-card__chips">
+                      <?php foreach ($items as $item): ?>
+                        <span class="teacher-card__chip"><?php echo esc_html($item); ?></span>
+                      <?php endforeach; ?>
+                    </div>
+                  </div>
+                <?php endforeach; ?>
+              </div>
+            <?php endif; ?>
+
+            <a href="https://app.1on1piano.com/match" class="teacher-card__cta" target="_blank" rel="noopener noreferrer">
+              Request a Lesson
+            </a>
+          </div>
         </article>
       <?php endforeach; ?>
 

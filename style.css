@@ -202,7 +202,16 @@ Template: astra
   display: block;
   text-decoration: none;
   color: inherit;
-  height: 100%;
+}
+
+.teacher-card__name-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.teacher-card__name-link:hover .teacher-card__name {
+  text-decoration: underline;
 }
 
 .teacher-card__image-wrap {
@@ -283,6 +292,25 @@ Template: astra
   border: 1px solid rgba(1, 109, 76, 0.2);
   font-size: 12px;
   line-height: 1.3;
+}
+
+.teacher-card__cta {
+  display: block;
+  margin-top: 14px;
+  padding: 9px 16px;
+  border-radius: 10px;
+  background: var(--color-primary);
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.teacher-card__cta:hover {
+  background: #015a3f;
+  color: #fff;
 }
 
 .teacher-card:hover {
@@ -410,6 +438,24 @@ body.teacher-full-width #primary {
   font-size: 14px;
   line-height: 1.6;
   opacity: 0.75;
+}
+
+.teacher-page__cta {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 28px;
+  border-radius: 12px;
+  background: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.teacher-page__cta:hover {
+  background: #015a3f;
+  color: #fff;
 }
 
 .teacher-page__section {
